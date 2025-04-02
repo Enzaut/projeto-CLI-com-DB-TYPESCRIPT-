@@ -10,7 +10,7 @@ const categoriaRepository = AppDataSource.getRepository(Categoria);
 export async function adicionarProduto() {
   const categorias = await categoriaRepository.find();
   if (categorias.length === 0) {
-    console.log("❌ Nenhuma categoria cadastrada. Cadastre uma antes de adicionar um produto.");
+    console.log("Nenhuma categoria cadastrada. Cadastre uma antes de adicionar um produto.");
     return;
   }
 
@@ -43,14 +43,14 @@ export async function adicionarProduto() {
   });
 
   await produtoRepository.save(novoProduto);
-  console.log(`✅ Produto "${resposta.nome}" adicionado com sucesso!`);
+  console.log(`Produto "${resposta.nome}" adicionado com sucesso!`);
 }
 
 export async function listarProdutos() {
   const produtos = await produtoRepository.find({ relations: ["categoria"] });
 
   if (produtos.length === 0) {
-    console.log("❌ Nenhum produto cadastrado.");
+    console.log("Nenhum produto cadastrado.");
     return;
   }
 
@@ -81,9 +81,9 @@ export async function buscarProduto() {
   const produto = await produtoRepository.findOne({ where: { id }, relations: ["categoria"] });
 
   if (produto) {
-    console.log("✅ Produto encontrado:", produto);
+    console.log("Produto encontrado:", produto);
   } else {
-    console.log("❌ Produto não encontrado!");
+    console.log("Produto não encontrado!");
   }
 }
 
@@ -93,7 +93,7 @@ export async function atualizarProduto() {
   const produto = await produtoRepository.findOne({ where: { id }, relations: ["categoria"] });
 
   if (!produto) {
-    console.log("❌ Produto não encontrado!");
+    console.log("Produto não encontrado!");
     return;
   }
 
@@ -107,7 +107,7 @@ export async function atualizarProduto() {
   Object.assign(produto, { nome, descricao, preco, quantidade, dataAtualizacao: new Date() });
 
   await produtoRepository.save(produto);
-  console.log(`✅ Produto "${produto.nome}" atualizado!`);
+  console.log(`Produto "${produto.nome}" atualizado!`);
 }
 
 export async function deletarProduto() {
@@ -116,10 +116,10 @@ export async function deletarProduto() {
   const produto = await produtoRepository.findOne({ where: { id } });
 
   if (!produto) {
-    console.log("❌ Produto não encontrado!");
+    console.log("Produto não encontrado!");
     return;
   }
 
   await produtoRepository.remove(produto);
-  console.log(`✅ Produto "${produto.nome}" removido!`);
+  console.log(`Produto "${produto.nome}" removido!`);
 }
