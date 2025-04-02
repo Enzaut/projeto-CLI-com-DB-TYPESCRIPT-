@@ -14,9 +14,9 @@ import { AppDataSource } from "./data-source";
 async function iniciarBanco() {
   try {
     await AppDataSource.initialize();
-    console.log("📦 Banco de dados conectado!");
+    console.log(" Banco de dados conectado!");
   } catch (error) {
-    console.error("❌ Erro ao conectar no banco:", error);
+    console.error("Erro ao conectar no banco:", error);
     return; // Apenas retorna em vez de encerrar o processo
   }
 }
@@ -55,7 +55,7 @@ async function menu() {
       else if (opcao === "Atualizar Produto") await atualizarProduto();
       else if (opcao === "Deletar Produto") await deletarProduto();
       else if (opcao === "Sair") {
-        console.log("👋 Encerrando o sistema...");
+        console.log("Encerrando o sistema...");
         await AppDataSource.destroy(); // Fecha conexão com o banco
         limparTerminal();
         process.exit(0);
