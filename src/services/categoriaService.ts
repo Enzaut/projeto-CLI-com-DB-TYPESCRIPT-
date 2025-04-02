@@ -14,14 +14,14 @@ export async function adicionarCategoria() {
   const categoria = categoriaRepository.create({ nome, descricao });
   await categoriaRepository.save(categoria);
 
-  console.log(`✅ Categoria "${nome}" adicionada ao banco de dados!`);
+  console.log(` Categoria "${nome}" adicionada ao banco de dados!`);
 }
 
 export async function listarCategorias() {
   const categorias = await categoriaRepository.find();
 
   if (categorias.length === 0) {
-    console.log("❌ Nenhuma categoria cadastrada.");
+    console.log("Nenhuma categoria cadastrada.");
     return;
   }
 
@@ -53,9 +53,9 @@ export async function buscarCategoria() {
   const categoria = await categoriaRepository.findOne({ where: { id } });
 
   if (categoria) {
-    console.log("✅ Categoria encontrada:", categoria);
+    console.log("Categoria encontrada:", categoria);
   } else {
-    console.log("❌ Categoria não encontrada!");
+    console.log("Categoria não encontrada!");
   }
 }
 
@@ -83,7 +83,7 @@ export async function atualizarCategoria() {
   categoria.dataAtualizacao = new Date();
   await categoriaRepository.save(categoria);
 
-  console.log(`✅ Categoria "${categoria.nome}" atualizada!`);
+  console.log(`Categoria "${categoria.nome}" atualizada!`);
 }
 
 export async function deletarCategoria() {
@@ -96,7 +96,7 @@ export async function deletarCategoria() {
   const categoria = await categoriaRepository.findOne({ where: { id } });
 
   if (!categoria) {
-    console.log("❌ Categoria não encontrada!");
+    console.log("Categoria não encontrada!");
     return;
   }
 
